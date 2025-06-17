@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software - Clave Digital</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #111827; color: #f9fafb; }
+        .product-card { background-color: #1f2937; border: 1px solid #374151; transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; flex-direction: column; }
+        .product-card:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.2), 0 8px 10px -6px rgb(0 0 0 / 0.2); }
+        .buy-button { background-color: #10B981; transition: background-color 0.2s ease; }
+        .buy-button:hover { background-color: #059669; }
+        .info-icon { color: #9ca3af; transition: color 0.2s ease; }
+        .info-icon:hover { color: #ffffff; }
+        .details-content { transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out, opacity 0.4s; max-height: 0; overflow: hidden; padding-top: 0; padding-bottom: 0; opacity: 0; }
+        .details-content.open { max-height: 500px; padding-top: 0.75rem; opacity: 1; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- =========== Encabezado y Navegación =========== -->
+    <header class="bg-[#111827]/80 backdrop-blur-lg border-b border-gray-700 sticky top-0 z-50">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
+            <a href="index.html" class="flex items-center"><img src="https://ia600907.us.archive.org/3/items/clave-digital/Clave%20Digital.png" alt="Logo de Clave Digital" class="h-12 w-auto"></a>
+            <ul class="hidden lg:flex items-center space-x-6 text-sm font-semibold text-gray-300">
+                <li><a href="streaming.html" class="hover:text-white">Streaming</a></li>
+                <li><a href="software.html" class="hover:text-white">Software</a></li>
+                <li><a href="licencias.html" class="hover:text-white">Licencias</a></li>
+                <li><a href="pagos.html" class="hover:text-white">Métodos de Pago</a></li>
+                <li><a href="porque-elegirnos.html" class="hover:text-white">¿Por Qué Elegirnos?</a></li>
+                <li><a href="unete.html" class="hover:text-white">Únete a Nosotros</a></li>
+            </ul>
+            <div class="lg:hidden"><button id="menu-btn" class="text-white focus:outline-none"><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg></button></div>
+        </nav>
+        <div id="mobile-menu" class="hidden lg:hidden">
+            <ul class="px-4 pb-4 space-y-2 text-sm text-center">
+                <li><a href="streaming.html" class="block py-2 rounded-md hover:bg-gray-700 text-gray-300 hover:text-white">Streaming</a></li>
+                <li><a href="software.html" class="block py-2 rounded-md hover:bg-gray-700 text-gray-300 hover:text-white">Software</a></li>
+                <li><a href="licencias.html" class="block py-2 rounded-md hover:bg-gray-700 text-gray-300 hover:text-white">Licencias</a></li>
+                <li><a href="pagos.html" class="block py-2 rounded-md hover:bg-gray-700 text-gray-300 hover:text-white">Métodos de Pago</a></li>
+                <li><a href="porque-elegirnos.html" class="block py-2 rounded-md hover:bg-gray-700 text-gray-300 hover:text-white">¿Por Qué Elegirnos?</a></li>
+                <li><a href="unete.html" class="block py-2 rounded-md hover:bg-gray-700 text-gray-300 hover:text-white">Únete a Nosotros</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <section>
+                <h2 class="text-3xl font-bold border-l-4 border-emerald-400 pl-4 mb-8">Software por Suscripción</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 items-start">
+                    
+                    <!-- Autodesk -->
+                    <div class="product-card rounded-lg"><img src="https://placehold.co/400x300/111827/ffffff?text=Autodesk+APPS" alt="Logo Autodesk" class="w-full h-40 object-cover rounded-t-lg"><div class="p-4 flex flex-col flex-grow"><div class="flex justify-between items-start"><h3 class="font-bold text-lg">Autodesk APPS</h3><button class="info-icon p-1 rounded-full flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></button></div><span class="text-xs font-medium bg-amber-500 text-white px-2 py-1 rounded-full self-start my-2">1 Año</span><div class="details-content text-xs text-gray-300"><p>• Incluye AutoCAD, Revit, Maya, etc.<br>• Actualizaciones durante 1 año.</p></div><div class="mt-auto pt-2"><p class="text-2xl font-bold">S/ 50.00 <span class="text-sm font-normal text-gray-400">($13.33 aprox.)</span></p><a href="https://api.whatsapp.com/send?phone=51943129913&text=Hola,%20estoy%20interesado%20en%20la%20suscripción%20de%20Autodesk%20APPS%20por%201%20año." target="_blank" class="buy-button w-full mt-2 text-white font-bold py-2 px-4 rounded-md text-center block">Comprar</a></div></div></div>
+
+                    <!-- Office 365 -->
+                    <div class="product-card rounded-lg"><img src="https://placehold.co/400x300/111827/ffffff?text=Office+365" alt="Logo Office 365" class="w-full h-40 object-cover rounded-t-lg"><div class="p-4 flex flex-col flex-grow"><div class="flex justify-between items-start"><h3 class="font-bold text-lg">Microsoft Office 365</h3><button class="info-icon p-1 rounded-full flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></button></div><span class="text-xs font-medium bg-amber-500 text-white px-2 py-1 rounded-full self-start my-2">1 Año</span><div class="details-content text-xs text-gray-300"><p>• Incluye Word, Excel, PowerPoint, etc.<br>• 1TB de almacenamiento en OneDrive.</p></div><div class="mt-auto pt-2"><p class="text-2xl font-bold">S/ 40.00 <span class="text-sm font-normal text-gray-400">($10.67 aprox.)</span></p><a href="https://api.whatsapp.com/send?phone=51943129913&text=Hola,%20estoy%20interesado%20en%20la%20licencia%20de%20Microsoft%20Office%20365%20por%201%20año." target="_blank" class="buy-button w-full mt-2 text-white font-bold py-2 px-4 rounded-md text-center block">Comprar</a></div></div></div>
+
+                    <!-- Adobe CC -->
+                    <div class="product-card rounded-lg"><img src="https://placehold.co/400x300/111827/ffffff?text=Adobe+CC" alt="Logo Adobe Creative Cloud" class="w-full h-40 object-cover rounded-t-lg"><div class="p-4 flex flex-col flex-grow"><div class="flex justify-between items-start"><h3 class="font-bold text-lg">Adobe Creative Cloud</h3><button class="info-icon p-1 rounded-full flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></button></div><span class="text-xs font-medium bg-red-600 text-white px-2 py-1 rounded-full self-start my-2">1 Mes</span><div class="details-content text-xs text-gray-300"><p>• Acceso a todas las apps: Photoshop, Illustrator, Premiere, etc.</p></div><div class="mt-auto pt-2"><p class="text-2xl font-bold">S/ 50.00 <span class="text-sm font-normal text-gray-400">($13.33 aprox.)</span></p><a href="https://api.whatsapp.com/send?phone=51943129913&text=Hola,%20estoy%20interesado%20en%20la%20suscripción%20de%20Adobe%20Creative%20Cloud%20por%201%20mes." target="_blank" class="buy-button w-full mt-2 text-white font-bold py-2 px-4 rounded-md text-center block">Comprar</a></div></div></div>
+
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- =========== Pie de Página =========== -->
+    <footer class="bg-gray-900 border-t border-gray-700">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 text-gray-400 text-sm">
+            <div class="text-center">
+                <p>&copy; 2025 Clave Digital. Todos los derechos reservados.</p>
+                <p class="mt-2">Tu tienda de confianza para software y entretenimiento digital.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Script para el menú móvil
+        document.getElementById('menu-btn').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+        // Script para los detalles de producto
+        document.querySelectorAll('.info-icon').forEach(button => {
+            button.addEventListener('click', (event) => {
+                event.stopPropagation();
+                const card = button.closest('.product-card');
+                if (!card) return;
+                const content = card.querySelector('.details-content');
+                if (!content) return;
+                const isOpening = !content.classList.contains('open');
+                document.querySelectorAll('.details-content.open').forEach(openContent => {
+                    if (openContent !== content) {
+                        openContent.classList.remove('open');
+                    }
+                });
+                if (isOpening) {
+                    content.classList.add('open');
+                } else {
+                    content.classList.remove('open');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
