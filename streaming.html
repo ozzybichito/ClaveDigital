@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Streaming - Clave Digital</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #111827; color: #f9fafb; }
+        .product-card { background-color: #1f2937; border: 1px solid #374151; transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; flex-direction: column; }
+        .product-card:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.2), 0 8px 10px -6px rgb(0 0 0 / 0.2); }
+        .info-icon { color: #9ca3af; transition: color 0.2s ease; }
+        .info-icon:hover { color: #ffffff; }
+        .details-content { transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out, opacity 0.4s; max-height: 0; overflow: hidden; padding-top: 0; padding-bottom: 0; opacity: 0; }
+        .details-content.open { max-height: 500px; padding-top: 0.75rem; opacity: 1; }
+        .quantity-input::-webkit-outer-spin-button, .quantity-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+        .quantity-input[type=number] { -moz-appearance: textfield; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- =========== Encabezado y Navegación =========== -->
+    <header class="bg-[#111827]/80 backdrop-blur-lg border-b border-gray-700 sticky top-0 z-50">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
+            <a href="index.html" class="flex items-center"><img src="https://ia600907.us.archive.org/3/items/clave-digital/Clave%20Digital.png" alt="Logo de Clave Digital" class="h-12 w-auto"></a>
+            <ul class="hidden lg:flex items-center space-x-6 text-sm font-semibold text-gray-300">
+                <li><a href="streaming.html" class="hover:text-white transition-colors">Streaming</a></li>
+                <li><a href="software.html" class="hover:text-white transition-colors">Software</a></li>
+                <li><a href="licencias.html" class="hover:text-white transition-colors">Licencias</a></li>
+                <li><a href="pagos.html" class="hover:text-white transition-colors">Métodos de Pago</a></li>
+                <li><a href="porque-elegirnos.html" class="hover:text-white transition-colors">¿Por Qué Elegirnos?</a></li>
+                <li><a href="unete.html" class="hover:text-white transition-colors">Únete a Nosotros</a></li>
+            </ul>
+            <div class="lg:hidden"><button id="menu-btn" class="text-white focus:outline-none"><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg></button></div>
+        </nav>
+        <div id="mobile-menu" class="hidden lg:hidden">
+            <ul class="px-4 pb-4 space-y-2 text-sm text-center">
+                <li><a href="streaming.html" class="block py-2 rounded-md hover:bg-gray-700 text-gray-300 hover:text-white">Streaming</a></li>
+                <li><a href="software.html" class="block py-2 rounded-md hover:bg-gray-700 text-gray-300 hover:text-white">Software</a></li>
+                <li><a href="licencias.html" class="block py-2 rounded-md hover:bg-gray-700 text-gray-300 hover:text-white">Licencias</a></li>
+                <li><a href="pagos.html" class="block py-2 rounded-md hover:bg-gray-700 text-gray-300 hover:text-white">Métodos de Pago</a></li>
+                <li><a href="porque-elegirnos.html" class="block py-2 rounded-md hover:bg-gray-700 text-gray-300 hover:text-white">¿Por Qué Elegirnos?</a></li>
+                <li><a href="unete.html" class="block py-2 rounded-md hover:bg-gray-700 text-gray-300 hover:text-white">Únete a Nosotros</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <section>
+                <h2 class="text-3xl font-bold border-l-4 border-emerald-400 pl-4 mb-8">Streaming: Video y Música</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    
+                    <!-- Netflix -->
+                    <div class="product-card rounded-lg" data-id="st01" data-name="Netflix" data-price="12.00" data-category="Streaming">
+                        <img src="https://placehold.co/400x300/e50914/ffffff?text=Netflix" alt="[Imagen de Netflix]" class="w-full h-40 object-cover rounded-t-lg">
+                        <div class="p-4 flex flex-col flex-grow">
+                            <div class="flex justify-between items-start"><h3 class="font-bold text-lg">Netflix</h3><button class="info-icon p-1 rounded-full flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></button></div>
+                            <span class="text-xs font-medium bg-gray-500 text-white px-2 py-1 rounded-full self-start my-2">Cuenta Mensual</span>
+                            <div class="details-content text-xs text-gray-300"><p>• Perfil 4K (Ultra HD).<br>• Acceso en 1 dispositivo a la vez.<br>• Perfil propio con PIN.</p></div>
+                            <div class="mt-auto pt-2">
+                                <p class="text-2xl font-bold">S/ 12.00 <span class="text-sm font-normal text-gray-400">($3.24 aprox.)</span></p>
+                                <div class="flex items-center justify-center space-x-3 mt-3">
+                                    <button class="quantity-btn decrement bg-gray-600 hover:bg-gray-500 text-white rounded-full w-8 h-8 font-bold transition-colors">-</button>
+                                    <input type="number" class="quantity-input w-16 text-center bg-gray-700 border border-gray-600 rounded-md text-white" value="0" min="0" max="50">
+                                    <button class="quantity-btn increment bg-emerald-500 hover:bg-emerald-600 text-white rounded-full w-8 h-8 font-bold transition-colors">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Disney+ -->
+                    <div class="product-card rounded-lg" data-id="st02" data-name="Disney+" data-price="10.00" data-category="Streaming">
+                        <img src="https://placehold.co/400x300/113ccf/ffffff?text=Disney+" alt="[Imagen de Disney+]" class="w-full h-40 object-cover rounded-t-lg">
+                        <div class="p-4 flex flex-col flex-grow">
+                            <div class="flex justify-between items-start"><h3 class="font-bold text-lg">Disney+</h3><button class="info-icon p-1 rounded-full flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></button></div>
+                            <span class="text-xs font-medium bg-gray-500 text-white px-2 py-1 rounded-full self-start my-2">Cuenta Mensual</span>
+                            <div class="details-content text-xs text-gray-300"><p>• Contenido de Disney, Pixar, Marvel, Star Wars y National Geographic.</p></div>
+                            <div class="mt-auto pt-2">
+                                <p class="text-2xl font-bold">S/ 10.00 <span class="text-sm font-normal text-gray-400">($2.70 aprox.)</span></p>
+                                <div class="flex items-center justify-center space-x-3 mt-3">
+                                    <button class="quantity-btn decrement bg-gray-600 hover:bg-gray-500 text-white rounded-full w-8 h-8 font-bold transition-colors">-</button>
+                                    <input type="number" class="quantity-input w-16 text-center bg-gray-700 border border-gray-600 rounded-md text-white" value="0" min="0" max="50">
+                                    <button class="quantity-btn increment bg-emerald-500 hover:bg-emerald-600 text-white rounded-full w-8 h-8 font-bold transition-colors">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Crunchyroll -->
+                    <div class="product-card rounded-lg" data-id="st03" data-name="Crunchyroll" data-price="5.00" data-category="Streaming">
+                        <img src="https://placehold.co/400x300/f47521/ffffff?text=Crunchyroll" alt="[Imagen de Crunchyroll]" class="w-full h-40 object-cover rounded-t-lg">
+                        <div class="p-4 flex flex-col flex-grow">
+                            <div class="flex justify-between items-start"><h3 class="font-bold text-lg">Crunchyroll</h3><button class="info-icon p-1 rounded-full flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></button></div>
+                            <span class="text-xs font-medium bg-gray-500 text-white px-2 py-1 rounded-full self-start my-2">Cuenta Mensual</span>
+                            <div class="details-content text-xs text-gray-300"><p>• Acceso ilimitado al catálogo de anime.<br>• Sin anuncios.</p></div>
+                            <div class="mt-auto pt-2">
+                                <p class="text-2xl font-bold">S/ 5.00 <span class="text-sm font-normal text-gray-400">($1.35 aprox.)</span></p>
+                                <div class="flex items-center justify-center space-x-3 mt-3">
+                                    <button class="quantity-btn decrement bg-gray-600 hover:bg-gray-500 text-white rounded-full w-8 h-8 font-bold transition-colors">-</button>
+                                    <input type="number" class="quantity-input w-16 text-center bg-gray-700 border border-gray-600 rounded-md text-white" value="0" min="0" max="50">
+                                    <button class="quantity-btn increment bg-emerald-500 hover:bg-emerald-600 text-white rounded-full w-8 h-8 font-bold transition-colors">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Prime Video -->
+                    <div class="product-card rounded-lg" data-id="st04" data-name="Prime Video" data-price="8.00" data-category="Streaming">
+                        <img src="https://placehold.co/400x300/00a8e1/ffffff?text=Prime+Video" alt="[Imagen de Prime Video]" class="w-full h-40 object-cover rounded-t-lg">
+                        <div class="p-4 flex flex-col flex-grow">
+                            <div class="flex justify-between items-start"><h3 class="font-bold text-lg">Prime Video</h3><button class="info-icon p-1 rounded-full flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></button></div>
+                            <span class="text-xs font-medium bg-gray-500 text-white px-2 py-1 rounded-full self-start my-2">Cuenta Mensual</span>
+                            <div class="details-content text-xs text-gray-300"><p>• Amplio catálogo de series y películas Amazon Originals.</p></div>
+                            <div class="mt-auto pt-2">
+                                <p class="text-2xl font-bold">S/ 8.00 <span class="text-sm font-normal text-gray-400">($2.16 aprox.)</span></p>
+                                <div class="flex items-center justify-center space-x-3 mt-3">
+                                    <button class="quantity-btn decrement bg-gray-600 hover:bg-gray-500 text-white rounded-full w-8 h-8 font-bold transition-colors">-</button>
+                                    <input type="number" class="quantity-input w-16 text-center bg-gray-700 border border-gray-600 rounded-md text-white" value="0" min="0" max="50">
+                                    <button class="quantity-btn increment bg-emerald-500 hover:bg-emerald-600 text-white rounded-full w-8 h-8 font-bold transition-colors">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Max -->
+                    <div class="product-card rounded-lg" data-id="st05" data-name="Max" data-price="7.00" data-category="Streaming">
+                        <img src="https://placehold.co/400x300/9b59b6/ffffff?text=Max" alt="[Imagen de Max]" class="w-full h-40 object-cover rounded-t-lg">
+                        <div class="p-4 flex flex-col flex-grow">
+                            <div class="flex justify-between items-start"><h3 class="font-bold text-lg">Max</h3><button class="info-icon p-1 rounded-full flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></button></div>
+                            <span class="text-xs font-medium bg-gray-500 text-white px-2 py-1 rounded-full self-start my-2">Cuenta Mensual</span>
+                            <div class="details-content text-xs text-gray-300"><p>• Contenido de HBO, Warner Bros, Discovery y más.</p></div>
+                            <div class="mt-auto pt-2">
+                                <p class="text-2xl font-bold">S/ 7.00 <span class="text-sm font-normal text-gray-400">($1.89 aprox.)</span></p>
+                                <div class="flex items-center justify-center space-x-3 mt-3">
+                                    <button class="quantity-btn decrement bg-gray-600 hover:bg-gray-500 text-white rounded-full w-8 h-8 font-bold transition-colors">-</button>
+                                    <input type="number" class="quantity-input w-16 text-center bg-gray-700 border border-gray-600 rounded-md text-white" value="0" min="0" max="50">
+                                    <button class="quantity-btn increment bg-emerald-500 hover:bg-emerald-600 text-white rounded-full w-8 h-8 font-bold transition-colors">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Vix -->
+                    <div class="product-card rounded-lg" data-id="st06" data-name="Vix" data-price="5.00" data-category="Streaming">
+                        <img src="https://placehold.co/400x300/0072ff/ffffff?text=Vix" alt="[Imagen de Vix]" class="w-full h-40 object-cover rounded-t-lg">
+                        <div class="p-4 flex flex-col flex-grow">
+                            <div class="flex justify-between items-start"><h3 class="font-bold text-lg">Vix</h3><button class="info-icon p-1 rounded-full flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></button></div>
+                            <span class="text-xs font-medium bg-gray-500 text-white px-2 py-1 rounded-full self-start my-2">Cuenta Mensual</span>
+                            <div class="details-content text-xs text-gray-300"><p>• Contenido original en español y deportes en vivo.</p></div>
+                            <div class="mt-auto pt-2">
+                                <p class="text-2xl font-bold">S/ 5.00 <span class="text-sm font-normal text-gray-400">($1.35 aprox.)</span></p>
+                                <div class="flex items-center justify-center space-x-3 mt-3">
+                                    <button class="quantity-btn decrement bg-gray-600 hover:bg-gray-500 text-white rounded-full w-8 h-8 font-bold transition-colors">-</button>
+                                    <input type="number" class="quantity-input w-16 text-center bg-gray-700 border border-gray-600 rounded-md text-white" value="0" min="0" max="50">
+                                    <button class="quantity-btn increment bg-emerald-500 hover:bg-emerald-600 text-white rounded-full w-8 h-8 font-bold transition-colors">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Paramount+ -->
+                    <div class="product-card rounded-lg" data-id="st07" data-name="Paramount+" data-price="7.00" data-category="Streaming">
+                        <img src="https://placehold.co/400x300/009eff/ffffff?text=Paramount+" alt="[Imagen de Paramount+]" class="w-full h-40 object-cover rounded-t-lg">
+                        <div class="p-4 flex flex-col flex-grow">
+                            <div class="flex justify-between items-start"><h3 class="font-bold text-lg">Paramount+</h3><button class="info-icon p-1 rounded-full flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></button></div>
+                            <span class="text-xs font-medium bg-gray-500 text-white px-2 py-1 rounded-full self-start my-2">Cuenta Mensual</span>
+                            <div class="details-content text-xs text-gray-300"><p>• Series y películas de Paramount, Showtime, CBS, etc.</p></div>
+                            <div class="mt-auto pt-2">
+                                <p class="text-2xl font-bold">S/ 7.00 <span class="text-sm font-normal text-gray-400">($1.89 aprox.)</span></p>
+                                <div class="flex items-center justify-center space-x-3 mt-3">
+                                    <button class="quantity-btn decrement bg-gray-600 hover:bg-gray-500 text-white rounded-full w-8 h-8 font-bold transition-colors">-</button>
+                                    <input type="number" class="quantity-input w-16 text-center bg-gray-700 border border-gray-600 rounded-md text-white" value="0" min="0" max="50">
+                                    <button class="quantity-btn increment bg-emerald-500 hover:bg-emerald-600 text-white rounded-full w-8 h-8 font-bold transition-colors">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Youtube -->
+                    <div class="product-card rounded-lg" data-id="st08" data-name="Youtube Premium" data-price="10.00" data-category="Streaming">
+                        <img src="https://placehold.co/400x300/ff0000/ffffff?text=Youtube" alt="[Imagen de Youtube]" class="w-full h-40 object-cover rounded-t-lg">
+                        <div class="p-4 flex flex-col flex-grow">
+                            <div class="flex justify-between items-start"><h3 class="font-bold text-lg">Youtube Premium</h3><button class="info-icon p-1 rounded-full flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></button></div>
+                            <span class="text-xs font-medium bg-gray-500 text-white px-2 py-1 rounded-full self-start my-2">Cuenta Mensual</span>
+                            <div class="details-content text-xs text-gray-300"><p>• Videos sin anuncios, reproducción en segundo plano y descargas.</p></div>
+                            <div class="mt-auto pt-2">
+                                <p class="text-2xl font-bold">S/ 10.00 <span class="text-sm font-normal text-gray-400">($2.70 aprox.)</span></p>
+                                <div class="flex items-center justify-center space-x-3 mt-3">
+                                    <button class="quantity-btn decrement bg-gray-600 hover:bg-gray-500 text-white rounded-full w-8 h-8 font-bold transition-colors">-</button>
+                                    <input type="number" class="quantity-input w-16 text-center bg-gray-700 border border-gray-600 rounded-md text-white" value="0" min="0" max="50">
+                                    <button class="quantity-btn increment bg-emerald-500 hover:bg-emerald-600 text-white rounded-full w-8 h-8 font-bold transition-colors">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Spotify -->
+                    <div class="product-card rounded-lg" data-id="st09" data-name="Spotify" data-price="10.00" data-category="Streaming">
+                        <img src="https://placehold.co/400x300/1db954/ffffff?text=Spotify" alt="[Imagen de Spotify]" class="w-full h-40 object-cover rounded-t-lg">
+                        <div class="p-4 flex flex-col flex-grow">
+                            <div class="flex justify-between items-start"><h3 class="font-bold text-lg">Spotify</h3><button class="info-icon p-1 rounded-full flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></button></div>
+                            <span class="text-xs font-medium bg-gray-500 text-white px-2 py-1 rounded-full self-start my-2">Cuenta Mensual</span>
+                            <div class="details-content text-xs text-gray-300"><p>• Música sin anuncios, saltos ilimitados y modo offline.</p></div>
+                            <div class="mt-auto pt-2">
+                                <p class="text-2xl font-bold">S/ 10.00 <span class="text-sm font-normal text-gray-400">($2.70 aprox.)</span></p>
+                                <div class="flex items-center justify-center space-x-3 mt-3">
+                                    <button class="quantity-btn decrement bg-gray-600 hover:bg-gray-500 text-white rounded-full w-8 h-8 font-bold transition-colors">-</button>
+                                    <input type="number" class="quantity-input w-16 text-center bg-gray-700 border border-gray-600 rounded-md text-white" value="0" min="0" max="50">
+                                    <button class="quantity-btn increment bg-emerald-500 hover:bg-emerald-600 text-white rounded-full w-8 h-8 font-bold transition-colors">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tidal -->
+                    <div class="product-card rounded-lg" data-id="st10" data-name="Tidal" data-price="10.00" data-category="Streaming">
+                        <img src="https://placehold.co/400x300/000000/ffffff?text=Tidal" alt="[Imagen de Tidal]" class="w-full h-40 object-cover rounded-t-lg">
+                        <div class="p-4 flex flex-col flex-grow">
+                            <div class="flex justify-between items-start"><h3 class="font-bold text-lg">Tidal</h3><button class="info-icon p-1 rounded-full flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></button></div>
+                            <span class="text-xs font-medium bg-gray-500 text-white px-2 py-1 rounded-full self-start my-2">Cuenta Mensual</span>
+                            <div class="details-content text-xs text-gray-300"><p>• Música en alta fidelidad (HiFi) y calidad Master.</p></div>
+                            <div class="mt-auto pt-2">
+                                <p class="text-2xl font-bold">S/ 10.00 <span class="text-sm font-normal text-gray-400">($2.70 aprox.)</span></p>
+                                <div class="flex items-center justify-center space-x-3 mt-3">
+                                    <button class="quantity-btn decrement bg-gray-600 hover:bg-gray-500 text-white rounded-full w-8 h-8 font-bold transition-colors">-</button>
+                                    <input type="number" class="quantity-input w-16 text-center bg-gray-700 border border-gray-600 rounded-md text-white" value="0" min="0" max="50">
+                                    <button class="quantity-btn increment bg-emerald-500 hover:bg-emerald-600 text-white rounded-full w-8 h-8 font-bold transition-colors">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- =========== Pie de Página del Carrito (Sticky) =========== -->
+    <footer class="bg-gray-900/90 backdrop-blur-sm sticky bottom-0 border-t border-gray-700 z-40">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <button id="clear-cart-button" title="Vaciar Carrito" class="p-2 rounded-full text-gray-400 hover:text-white hover:bg-red-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                    </svg>
+                </button>
+                <div class="text-lg font-bold text-white">
+                    Total: S/ <span id="total-price">0.00</span>
+                </div>
+            </div>
+            <button id="buy-button" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 px-8 rounded-lg transition-all duration-300 disabled:bg-gray-500 disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                Completar Pedido
+            </button>
+        </div>
+    </footer>
+
+    <!-- =========== Pie de Página Original =========== -->
+    <footer class="bg-gray-900">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 text-gray-400 text-sm">
+            <div class="text-center">
+                <p>&copy; 2025 Clave Digital. Todos los derechos reservados.</p>
+                <p class="mt-2">Tu tienda de confianza para software y entretenimiento digital.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- SCRIPTS DE LA PÁGINA (MENÚ Y DETALLES) ---
+        document.getElementById('menu-btn').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+        document.querySelectorAll('.info-icon').forEach(button => {
+            button.addEventListener('click', (event) => {
+                event.stopPropagation();
+                const card = button.closest('.product-card');
+                if (!card) return;
+                const content = card.querySelector('.details-content');
+                if (!content) return;
+                const isOpening = !content.classList.contains('open');
+                document.querySelectorAll('.details-content.open').forEach(openContent => {
+                    if (openContent !== content) openContent.classList.remove('open');
+                });
+                if (isOpening) {
+                    content.classList.add('open');
+                } else {
+                    content.classList.remove('open');
+                }
+            });
+        });
+
+        // --- SCRIPT DEL CARRITO DE COMPRAS (VERSIÓN FINAL CON LÍMITE DE STOCK) ---
+        const productContainers = document.querySelectorAll('.product-card[data-id]');
+        const totalPriceEl = document.getElementById('total-price');
+        const buyButton = document.getElementById('buy-button');
+        const clearCartButton = document.getElementById('clear-cart-button');
+        
+        const phoneNumber = '51943129913';
+        const exchangeRate = 3.7;
+        const stockLimit = 50;
+
+        const updateCart = () => {
+            let cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
+            productContainers.forEach(product => {
+                const id = product.dataset.id;
+                const quantity = parseInt(product.querySelector('.quantity-input').value);
+                const existingItemIndex = cart.findIndex(item => item.id === id);
+
+                if (quantity > 0) {
+                    const itemData = {
+                        id: id,
+                        name: product.dataset.name,
+                        price: parseFloat(product.dataset.price),
+                        category: product.dataset.category,
+                        quantity: quantity
+                    };
+                    if (existingItemIndex > -1) {
+                        cart[existingItemIndex] = itemData;
+                    } else {
+                        cart.push(itemData);
+                    }
+                } else {
+                    if (existingItemIndex > -1) {
+                        cart.splice(existingItemIndex, 1);
+                    }
+                }
+            });
+
+            localStorage.setItem('shoppingCart', JSON.stringify(cart));
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            totalPriceEl.textContent = total.toFixed(2);
+            buyButton.disabled = total === 0;
+            clearCartButton.disabled = total === 0;
+        };
+
+        const loadCart = () => {
+            const cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
+            productContainers.forEach(product => {
+                const id = product.dataset.id;
+                const cartItem = cart.find(item => item.id === id);
+                product.querySelector('.quantity-input').value = cartItem ? cartItem.quantity : 0;
+            });
+        };
+        
+        document.querySelectorAll('.quantity-btn').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const input = e.target.closest('.product-card').querySelector('.quantity-input');
+                let quantity = parseInt(input.value);
+                if (e.target.classList.contains('increment')) {
+                    if (quantity < stockLimit) { // Límite de stock
+                        quantity++;
+                    }
+                } else if (e.target.classList.contains('decrement') && quantity > 0) {
+                    quantity--;
+                }
+                input.value = quantity;
+                updateCart();
+            });
+        });
+
+        document.querySelectorAll('.quantity-input').forEach(input => {
+            input.addEventListener('change', (e) => {
+                let value = parseInt(e.target.value);
+                if (isNaN(value) || value < 0) {
+                    value = 0;
+                } else if (value > stockLimit) {
+                    value = stockLimit; // Límite de stock
+                }
+                e.target.value = value;
+                updateCart();
+            });
+        });
+
+        if (buyButton) {
+            buyButton.addEventListener('click', () => {
+                const cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
+                if (cart.length === 0) return;
+
+                let message = '*Pedido desde Clave Digital 🤓*\n';
+                const now = new Date();
+                const dateTimeString = now.toLocaleString('es-PE', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true });
+                message += `*Fecha:* ${dateTimeString}\n\n`;
+
+                const grouped = cart.reduce((acc, item) => {
+                    acc[item.category] = acc[item.category] || [];
+                    acc[item.category].push(item);
+                    return acc;
+                }, {});
+
+                let grandTotal = 0;
+                for (const category in grouped) {
+                    const categorySubtotal = grouped[category].reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                    grandTotal += categorySubtotal;
+                    message += `*${category} (Subtotal: S/ ${categorySubtotal.toFixed(2)})*\n`;
+                    grouped[category].forEach(item => {
+                        message += `- ${item.name} (Cantidad: ${item.quantity})\n`;
+                    });
+                    message += '\n';
+                }
+                
+                const totalInDollars = (grandTotal / exchangeRate).toFixed(2);
+                message += `--------------------------------\n`;
+                message += `*Total a pagar: S/ ${grandTotal.toFixed(2)}*\n`;
+                message += `_(Aprox. $${totalInDollars})_\n\n`;
+                message += `_Pedido generado desde la web._`;
+                
+                const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message.trim())}`;
+                window.open(whatsappUrl, '_blank');
+            });
+        }
+
+        if (clearCartButton) {
+            clearCartButton.addEventListener('click', () => {
+                const cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
+                if (cart.length > 0) {
+                    localStorage.removeItem('shoppingCart');
+                    document.querySelectorAll('.quantity-input').forEach(input => input.value = 0);
+                    updateCart();
+                }
+            });
+        }
+
+        loadCart();
+        updateCart();
+    });
+    </script>
+</body>
+</html>

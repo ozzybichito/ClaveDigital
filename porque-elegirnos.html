@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Por Qué Elegirnos? - Clave Digital</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #111827; color: #f9fafb; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- =========== Encabezado y Navegación =========== -->
+    <header class="bg-[#111827]/80 backdrop-blur-lg border-b border-gray-700 sticky top-0 z-50">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
+            <a href="index.html" class="flex items-center"><img src="https://ia600907.us.archive.org/3/items/clave-digital/Clave%20Digital.png" alt="Logo de Clave Digital" class="h-12 w-auto"></a>
+            <ul class="hidden lg:flex items-center space-x-6 text-sm font-semibold text-gray-300">
+                <li><a href="streaming.html" class="hover:text-white">Streaming</a></li>
+                <li><a href="software.html" class="hover:text-white">Software</a></li>
+                <li><a href="licencias.html" class="hover:text-white">Licencias</a></li>
+                <li><a href="pagos.html" class="hover:text-white">Métodos de Pago</a></li>
+                <li><a href="porque-elegirnos.html" class="hover:text-white">¿Por Qué Elegirnos?</a></li>
+                <li><a href="unete.html" class="hover:text-white">Únete a Nosotros</a></li>
+            </ul>
+            <div class="lg:hidden"><button id="menu-btn" class="text-white focus:outline-none"><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg></button></div>
+        </nav>
+        <div id="mobile-menu" class="hidden lg:hidden">
+            <ul class="px-4 pb-4 space-y-2 text-sm text-center">
+                <li><a href="streaming.html" class="block py-2 rounded-md hover:bg-gray-700 text-gray-300 hover:text-white">Streaming</a></li>
+                <li><a href="software.html" class="block py-2 rounded-md hover:bg-gray-700 text-gray-300 hover:text-white">Software</a></li>
+                <li><a href="licencias.html" class="block py-2 rounded-md hover:bg-gray-700 text-gray-300 hover:text-white">Licencias</a></li>
+                <li><a href="pagos.html" class="block py-2 rounded-md hover:bg-gray-700 text-gray-300 hover:text-white">Métodos de Pago</a></li>
+                <li><a href="porque-elegirnos.html" class="block py-2 rounded-md hover:bg-gray-700 text-gray-300 hover:text-white">¿Por Qué Elegirnos?</a></li>
+                <li><a href="unete.html" class="block py-2 rounded-md hover:bg-gray-700 text-gray-300 hover:text-white">Únete a Nosotros</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <section>
+                <h2 class="text-3xl font-bold border-l-4 border-emerald-400 pl-4 mb-8">¿Por Qué Elegir Clave Digital?</h2>
+                <div class="bg-gray-800 rounded-lg p-8 text-center">
+                    <h3 class="text-4xl font-black">No solo vendemos, te acompañamos.</h3>
+                    <p class="mt-4 max-w-3xl mx-auto text-gray-300">En un mercado lleno de opciones, podrías encontrar precios ligeramente más bajos, pero ¿qué pasa después de la compra? En Clave Digital, nuestra mayor fortaleza es el <strong>soporte postventa</strong>. No te abandonamos. Cualquier duda, problema de instalación o configuración, estamos aquí para ayudarte. Nuestro servicio de soporte es algo que no tiene precio, y es la razón por la que nuestros clientes nos prefieren y se quedan con nosotros. Tu tranquilidad vale más.</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- =========== Pie de Página del Carrito (Sticky) =========== -->
+    <footer class="bg-gray-900/90 backdrop-blur-sm sticky bottom-0 border-t border-gray-700 z-40">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <button id="clear-cart-button" title="Vaciar Carrito" class="p-2 rounded-full text-gray-400 hover:text-white hover:bg-red-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                    </svg>
+                </button>
+                <div class="text-lg font-bold text-white">
+                    Total: S/ <span id="total-price">0.00</span>
+                </div>
+            </div>
+            <button id="buy-button" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 px-8 rounded-lg transition-all duration-300 disabled:bg-gray-500 disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                Completar Pedido
+            </button>
+        </div>
+    </footer>
+
+    <!-- =========== Pie de Página =========== -->
+    <footer class="bg-gray-900">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 text-gray-400 text-sm">
+            <div class="text-center">
+                <p>&copy; 2025 Clave Digital. Todos los derechos reservados.</p>
+                <p class="mt-2">Tu tienda de confianza para software y entretenimiento digital.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- SCRIPT DEL MENÚ MÓVIL ---
+        document.getElementById('menu-btn').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // --- SCRIPT DEL CARRITO (VERSIÓN PARA PÁGINAS SIN PRODUCTOS) ---
+        const totalPriceEl = document.getElementById('total-price');
+        const buyButton = document.getElementById('buy-button');
+        const clearCartButton = document.getElementById('clear-cart-button');
+        
+        const phoneNumber = '51943129913';
+        const exchangeRate = 3.7;
+
+        const updateCartView = () => {
+            const cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            if (totalPriceEl) totalPriceEl.textContent = total.toFixed(2);
+            if (buyButton) buyButton.disabled = total === 0;
+            if (clearCartButton) clearCartButton.disabled = total === 0;
+        };
+
+        if (buyButton) {
+            buyButton.addEventListener('click', () => {
+                const cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
+                if (cart.length === 0) return;
+
+                let message = '*Pedido desde Clave Digital 🤓*\n';
+                const now = new Date();
+                const dateTimeString = now.toLocaleString('es-PE', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true });
+                message += `*Fecha:* ${dateTimeString}\n\n`;
+
+                const grouped = cart.reduce((acc, item) => {
+                    acc[item.category] = acc[item.category] || [];
+                    acc[item.category].push(item);
+                    return acc;
+                }, {});
+
+                let grandTotal = 0;
+                for (const category in grouped) {
+                    const categorySubtotal = grouped[category].reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                    grandTotal += categorySubtotal;
+                    message += `*${category} (Subtotal: S/ ${categorySubtotal.toFixed(2)})*\n`;
+                    grouped[category].forEach(item => {
+                        message += `- ${item.name} (Cantidad: ${item.quantity})\n`;
+                    });
+                    message += '\n';
+                }
+                
+                const totalInDollars = (grandTotal / exchangeRate).toFixed(2);
+                message += `--------------------------------\n`;
+                message += `*Total a pagar: S/ ${grandTotal.toFixed(2)}*\n`;
+                message += `_(Aprox. $${totalInDollars})_\n\n`;
+                message += `_Pedido generado desde la web._`;
+                
+                const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message.trim())}`;
+                window.open(whatsappUrl, '_blank');
+            });
+        }
+
+        if (clearCartButton) {
+            clearCartButton.addEventListener('click', () => {
+                const cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
+                if (cart.length > 0) {
+                    localStorage.removeItem('shoppingCart');
+                    updateCartView();
+                }
+            });
+        }
+
+        updateCartView();
+    });
+    </script>
+</body>
+</html>
