@@ -21,6 +21,8 @@
         .details-content.open { max-height: 500px; padding-top: 0.75rem; opacity: 1; }
         .quantity-input::-webkit-outer-spin-button, .quantity-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
         .quantity-input[type=number] { -moz-appearance: textfield; }
+        /* Estilo para el banner de oferta */
+        #offer-banner { display: none; /* Se mostrará con JS si la oferta está activa */ }
     </style>
 </head>
 <body class="antialiased">
@@ -32,7 +34,6 @@
             <ul class="hidden lg:flex items-center space-x-6 text-sm font-semibold text-gray-300">
                 <li><a href="streaming.html" class="hover:text-white transition-colors">Streaming</a></li>
                 <li><a href="software.html" class="hover:text-white transition-colors">Software</a></li>
-                <!-- ENLACE ACTIVO -->
                 <li><a href="apk.html" class="text-white font-bold transition-colors">APKs Premium</a></li>
                 <li><a href="licencias.html" class="hover:text-white transition-colors">Licencias</a></li>
                 <li><a href="pagos.html" class="hover:text-white transition-colors">Métodos de Pago</a></li>
@@ -47,7 +48,6 @@
             <ul class="px-4 pb-4 space-y-2 text-sm text-center">
                 <li><a href="streaming.html" class="block py-2 rounded-md hover:bg-gray-700 text-gray-300 hover:text-white transition-colors">Streaming</a></li>
                 <li><a href="software.html" class="block py-2 rounded-md hover:bg-gray-700 text-gray-300 hover:text-white transition-colors">Software</a></li>
-                 <!-- ENLACE ACTIVO -->
                 <li><a href="apk.html" class="block py-2 rounded-md bg-gray-700 text-white transition-colors">APKs Premium</a></li>
                 <li><a href="licencias.html" class="block py-2 rounded-md hover:bg-gray-700 text-gray-300 hover:text-white transition-colors">Licencias</a></li>
                 <li><a href="pagos.html" class="block py-2 rounded-md hover:bg-gray-700 text-gray-300 hover:text-white transition-colors">Métodos de Pago</a></li>
@@ -61,15 +61,23 @@
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
             <section>
                 <h2 class="text-3xl font-bold border-l-4 border-cyan-400 pl-4 mb-8">APKs Premium</h2>
+
+                <!-- =========== INICIO: BANNER DE OFERTA =========== -->
+                <div id="offer-banner" class="bg-gradient-to-r from-red-500 to-amber-500 text-white p-4 rounded-lg mb-8 shadow-lg text-center">
+                    <p class="font-bold text-lg">¡OFERTA FLASH! 50% DE DESCUENTO EN DRAMABOX</p>
+                    <p>La oferta termina en: <span id="countdown-timer" class="font-mono font-bold text-xl"></span></p>
+                </div>
+                <!-- =========== FIN: BANNER DE OFERTA =========== -->
+                
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                     
                     <!-- Tarjeta del Producto: DRAMABOX -->
-                    <div class="product-card rounded-lg" data-id="apk-dramabox" data-name="DRAMABOX Premium" data-price="10.00" data-category="APKs Premium">
+                    <div class="product-card rounded-lg" data-id="apk-dramabox" data-name="DRAMABOX Premium" data-price="15.00" data-category="APKs Premium">
                         <div class="w-full h-40 rounded-t-lg bg-gradient-to-br from-cyan-800 to-gray-900 flex items-center justify-center p-4">
                              <div class="text-center">
                                  <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 mx-auto text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                                   <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
-                                </svg>
+                                 </svg>
                                  <h4 class="text-white font-semibold text-lg tracking-wide">DRAMABOX</h4>
                              </div>
                         </div>
@@ -83,7 +91,11 @@
                                 <p>• Acceso VIP desbloqueado.<br>• Sin anuncios.<br>• Disfruta de todos los dramas.</p>
                             </div>
                             <div class="mt-auto pt-2">
-                                <p class="text-2xl font-bold">S/ 10.00 <span class="text-sm font-normal text-gray-400">($2.70 aprox.)</span></p>
+                                <!-- =========== INICIO: CONTENEDOR DE PRECIO MODIFICADO =========== -->
+                                <div id="price-container-apk-dramabox" class="flex items-center" style="min-height: 2.5rem;">
+                                    <!-- El script llenará este espacio con el precio normal o de oferta -->
+                                </div>
+                                <!-- =========== FIN: CONTENEDOR DE PRECIO MODIFICADO =========== -->
                                 <div class="flex items-center justify-center space-x-3 mt-3">
                                     <button class="quantity-btn decrement bg-gray-600 hover:bg-gray-500 text-white rounded-full w-8 h-8 font-bold transition-colors">-</button>
                                     <input type="number" class="quantity-input w-16 text-center bg-gray-700 border border-gray-600 rounded-md text-white" value="0" min="0" max="50">
@@ -143,11 +155,9 @@
                 const content = card.querySelector('.details-content');
                 if (!content) return;
                 const isOpening = !content.classList.contains('open');
-                // Cierra todos los demás detalles abiertos
                 document.querySelectorAll('.details-content.open').forEach(openContent => {
                     if (openContent !== content) openContent.classList.remove('open');
                 });
-                // Abre o cierra el actual
                 if (isOpening) {
                     content.classList.add('open');
                 } else {
@@ -156,17 +166,92 @@
             });
         });
 
-        // --- SCRIPT DEL CARRITO DE COMPRAS (IDÉNTICO AL DE SOFTWARE.HTML) ---
+        // --- INICIO: LÓGICA DE LA OFERTA Y CONTADOR ---
+
+        const exchangeRate = 3.7; // Tipo de cambio
+        const offerConfig = {
+            productId: 'apk-dramabox',
+            normalPrice: 15.00,
+            offerPrice: 7.50,
+            endDate: new Date('2025-06-23T00:00:00-05:00'), // La oferta termina cuando el Domingo 22 finaliza
+        };
+
+        const offerBanner = document.getElementById('offer-banner');
+        const countdownTimerEl = document.getElementById('countdown-timer');
+        const productCard = document.querySelector(`.product-card[data-id="${offerConfig.productId}"]`);
+        const priceContainer = document.getElementById(`price-container-${offerConfig.productId}`);
+        let countdownInterval;
+
+        function revertToNormalPrice() {
+            if (offerBanner) offerBanner.style.display = 'none';
+            if (productCard) {
+                productCard.dataset.price = offerConfig.normalPrice.toFixed(2);
+                if (priceContainer) {
+                    const normalPriceInDollars = (offerConfig.normalPrice / exchangeRate).toFixed(2);
+                    priceContainer.innerHTML = `<p class="text-2xl font-bold">S/ ${offerConfig.normalPrice.toFixed(2)} <span class="text-sm font-normal text-gray-400">($${normalPriceInDollars} aprox.)</span></p>`;
+                }
+                updateCart(); 
+            }
+        }
+        
+        function updateCountdown() {
+            const now = new Date();
+            const nowInPeru = new Date(now.toLocaleString("en-US", {timeZone: "America/Lima"}));
+            const distance = offerConfig.endDate - nowInPeru;
+
+            if (distance <= 0) {
+                clearInterval(countdownInterval);
+                if(countdownTimerEl) countdownTimerEl.textContent = "¡Oferta terminada!";
+                revertToNormalPrice();
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            if(countdownTimerEl) countdownTimerEl.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        }
+
+        function applyOffer() {
+            if (offerBanner) offerBanner.style.display = 'block';
+            if (productCard) {
+                productCard.dataset.price = offerConfig.offerPrice.toFixed(2);
+                if (priceContainer) {
+                    const offerPriceInDollars = (offerConfig.offerPrice / exchangeRate).toFixed(2);
+                    // APLICANDO LA NUEVA ESTRUCTURA DE PRECIO
+                    priceContainer.innerHTML = `
+                        <p class="text-2xl font-bold text-red-500">
+                            S/ ${offerConfig.offerPrice.toFixed(2)}
+                            <span class="text-sm font-normal text-gray-400 ml-1">($${offerPriceInDollars} aprox.)</span>
+                            <span class="text-lg font-normal text-gray-500 line-through ml-2">S/ ${offerConfig.normalPrice.toFixed(2)}</span>
+                        </p>
+                    `;
+                }
+            }
+            countdownInterval = setInterval(updateCountdown, 1000);
+            updateCountdown();
+        }
+
+        const now = new Date();
+        const nowInPeru = new Date(now.toLocaleString("en-US", {timeZone: "America/Lima"}));
+        if (nowInPeru < offerConfig.endDate && productCard && priceContainer) {
+            applyOffer();
+        } else {
+            revertToNormalPrice();
+        }
+        // --- FIN: LÓGICA DE LA OFERTA Y CONTADOR ---
+
+        // --- SCRIPT DEL CARRITO DE COMPRAS ---
         const productContainers = document.querySelectorAll('.product-card[data-id]');
         const totalPriceEl = document.getElementById('total-price');
         const buyButton = document.getElementById('buy-button');
         const clearCartButton = document.getElementById('clear-cart-button');
         
         const phoneNumber = '51943129913';
-        const exchangeRate = 3.7;
         const stockLimit = 50;
 
-        // Función para actualizar el carrito en localStorage y la UI
         const updateCart = () => {
             let cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
             productContainers.forEach(product => {
@@ -202,7 +287,6 @@
             clearCartButton.disabled = total === 0;
         };
         
-        // Carga el estado del carrito desde localStorage al iniciar la página
         const loadCart = () => {
             const cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
             productContainers.forEach(product => {
@@ -212,15 +296,12 @@
             });
         };
         
-        // Manejadores de eventos para los botones de cantidad
         document.querySelectorAll('.quantity-btn').forEach(button => {
             button.addEventListener('click', (e) => {
                 const input = e.target.closest('.product-card').querySelector('.quantity-input');
                 let quantity = parseInt(input.value);
                 if (e.target.classList.contains('increment')) {
-                    if (quantity < stockLimit) {
-                        quantity++;
-                    }
+                    if (quantity < stockLimit) quantity++;
                 } else if (e.target.classList.contains('decrement') && quantity > 0) {
                     quantity--;
                 }
@@ -229,21 +310,16 @@
             });
         });
 
-        // Manejadores de eventos para el input de cantidad
         document.querySelectorAll('.quantity-input').forEach(input => {
             input.addEventListener('change', (e) => {
                 let value = parseInt(e.target.value);
-                if (isNaN(value) || value < 0) {
-                    value = 0;
-                } else if (value > stockLimit) {
-                    value = stockLimit;
-                }
+                if (isNaN(value) || value < 0) value = 0;
+                else if (value > stockLimit) value = stockLimit;
                 e.target.value = value;
                 updateCart();
             });
         });
 
-        // Manejador para el botón de "Completar Pedido"
         if (buyButton) {
             buyButton.addEventListener('click', () => {
                 const cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
@@ -266,7 +342,11 @@
                     grandTotal += categorySubtotal;
                     message += `*${category} (Subtotal: S/ ${categorySubtotal.toFixed(2)})*\n`;
                     grouped[category].forEach(item => {
-                        message += `- ${item.name} (Cantidad: ${item.quantity})\n`;
+                        if(item.id === offerConfig.productId && item.price === offerConfig.offerPrice) {
+                             message += `- ${item.name} (Cantidad: ${item.quantity}) - ¡Con precio de oferta! ✨\n`;
+                        } else {
+                             message += `- ${item.name} (Cantidad: ${item.quantity})\n`;
+                        }
                     });
                     message += '\n';
                 }
@@ -282,7 +362,6 @@
             });
         }
 
-        // Manejador para el botón de "Vaciar Carrito"
         if (clearCartButton) {
             clearCartButton.addEventListener('click', () => {
                 const cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
@@ -294,7 +373,6 @@
             });
         }
 
-        // Carga inicial del carrito
         loadCart();
         updateCart();
     });
