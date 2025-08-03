@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clave Digital - Tu Tienda de Software y Streaming</title>
+    <title>Clave Digital - Onn. 4K TV Box: Entretenimiento Total</title>
     
-    <!-- Tailwind CSS y Google Fonts -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,27 +13,28 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #111827;
+            background-color: #111827; /* Fondo oscuro principal */
             color: #f9fafb;
             scroll-behavior: smooth;
         }
+        /* Animación para la aparición de elementos */
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .fade-in-up { animation: fadeInUp 1s ease-out forwards; }
+        .fade-in-up {
+            animation: fadeInUp 1s ease-out forwards;
+        }
     </style>
 </head>
 <body class="antialiased">
 
-    <!-- =========== Encabezado y Navegación =========== -->
     <header class="bg-[#111827]/80 backdrop-blur-lg border-b border-gray-700 sticky top-0 z-50">
         <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
             <a href="index.html" class="flex items-center"><img src="https://ia600907.us.archive.org/3/items/clave-digital/Clave%20Digital.png" alt="Logo de Clave Digital" class="h-12 w-auto"></a>
             <ul class="hidden lg:flex items-center space-x-6 text-sm font-semibold text-gray-300">
                 <li><a href="streaming.html" class="hover:text-white transition-colors">Streaming</a></li>
                 <li><a href="software.html" class="hover:text-white transition-colors">Software</a></li>
-                <!-- NUEVO ENLACE AÑADIDO -->
                 <li><a href="apk.html" class="hover:text-white transition-colors">APKs Premium</a></li>
                 <li><a href="licencias.html" class="hover:text-white transition-colors">Licencias</a></li>
                 <li><a href="pagos.html" class="hover:text-white transition-colors">Métodos de Pago</a></li>
@@ -49,7 +49,6 @@
             <ul class="px-4 pb-4 space-y-2 text-sm text-center">
                 <li><a href="streaming.html" class="block py-2 rounded-md hover:bg-gray-700 text-gray-300 hover:text-white transition-colors">Streaming</a></li>
                 <li><a href="software.html" class="block py-2 rounded-md hover:bg-gray-700 text-gray-300 hover:text-white transition-colors">Software</a></li>
-                <!-- NUEVO ENLACE AÑADIDO -->
                 <li><a href="apk.html" class="block py-2 rounded-md hover:bg-gray-700 text-gray-300 hover:text-white transition-colors">APKs Premium</a></li>
                 <li><a href="licencias.html" class="block py-2 rounded-md hover:bg-gray-700 text-gray-300 hover:text-white transition-colors">Licencias</a></li>
                 <li><a href="pagos.html" class="block py-2 rounded-md hover:bg-gray-700 text-gray-300 hover:text-white transition-colors">Métodos de Pago</a></li>
@@ -60,25 +59,92 @@
     </header>
 
     <main>
-        <!-- =========== SECCIÓN DE HÉROE =========== -->
-        <section class="w-full text-center">
-            <div class="px-4 pt-16 pb-24 md:pt-24 md:pb-32">
-                <div class="fade-in-up" style="animation-delay: 0.2s;">
-                    <h1 class="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">Tus Claves para el Mundo Digital</h1>
-                    <p class="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-gray-300">Activa tu software, disfruta tus series y lleva tu productividad al siguiente nivel. Todo en un solo lugar.</p>
+        
+        <section class="w-full text-center py-16 md:py-24">
+            <div class="container mx-auto px-4">
+                <div class="fade-in-up">
+                    <h1 class="text-4xl md:text-6xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">Di Adiós al Cable y al Aburrimiento</h1>
+                    <p class="mt-4 max-w-3xl mx-auto text-lg md:text-xl text-gray-300">Transforma CUALQUIER TV en un Smart TV de última generación con nuestro Onn. 4K TV Box. Accede a todo el contenido que te gusta, sin contratos ni pagos mensuales.</p>
                 </div>
-                <div class="mt-10 fade-in-up" style="animation-delay: 0.4s;">
-                    <p class="text-xl md:text-2xl font-semibold text-gray-200">El mejor entretenimiento, al mejor precio.</p>
-                    <div class="mt-6">
-                        <a href="streaming.html" class="bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-10 rounded-lg text-xl transition-transform hover:scale-105 inline-block shadow-lg shadow-red-600/40">Ver Cuentas de Streaming</a>
+                
+                <div class="mt-12 fade-in-up" style="animation-delay: 0.2s;">
+                    <img src="https://i.ebayimg.com/images/g/16IAAOSwvslkfSin/s-l1600.webp" alt="Onn. 4K Streaming Box con todos sus componentes" class="max-w-md mx-auto rounded-lg filter drop-shadow-2xl">
+                </div>
+
+                <div class="mt-12 fade-in-up" style="animation-delay: 0.4s;">
+                    <button id="add-tv-box-button"
+                            data-id="onn-tv-box-01"
+                            data-name="Onn. 4K TV Box (Edición Total)"
+                            data-price="180.00"
+                            data-category="Dispositivos Físicos"
+                            class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-4 px-10 rounded-lg text-xl transition-transform hover:scale-105 inline-block shadow-lg shadow-emerald-500/40">
+                        Añadir al Carrito - S/ 180.00
+                    </button>
+                    <p class="mt-4 text-sm text-gray-400">¡Envío rápido y seguro a todo el Perú! 📦</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="py-16 md:py-24 bg-gray-900">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-12">Tu Paquete de Entretenimiento Ilimitado</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 hover:border-emerald-500 hover:scale-105 transition-all">
+                        <img src="https://i.imgur.com/f2cf1aE.png" alt="Logo Magis TV" class="h-12 mx-auto mb-4">
+                        <h3 class="text-xl font-bold mb-2">Universo de Contenido</h3>
+                        <p class="text-gray-400 text-sm">Con Magis TV instalado, accede a catálogos de Disney+, Netflix, HBO y más. Miles de películas y series sin pagos extra.</p>
+                    </div>
+                    <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 hover:border-emerald-500 hover:scale-105 transition-all">
+                         <img src="https://i.imgur.com/2Yj3Y2b.png" alt="Icono de TV en vivo" class="h-12 mx-auto mb-4">
+                        <h3 class="text-xl font-bold mb-2">Canales en Vivo</h3>
+                        <p class="text-gray-400 text-sm">Disfruta cientos de canales nacionales de Perú e internacionales. Deportes, noticias y novelas al instante.</p>
+                    </div>
+                    <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 hover:border-emerald-500 hover:scale-105 transition-all">
+                        <img src="https://i.imgur.com/O909Q4j.png" alt="Logo YouTube" class="h-12 mx-auto mb-4">
+                        <h3 class="text-xl font-bold mb-2">YouTube sin Comerciales</h3>
+                        <p class="text-gray-400 text-sm">Mira todos los videos, música y tutoriales que quieras sin una sola interrupción publicitaria.</p>
+                    </div>
+                    <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 hover:border-emerald-500 hover:scale-105 transition-all">
+                        <img src="https://i.imgur.com/s642w4A.png" alt="Logo Spotify" class="h-12 mx-auto mb-4">
+                        <h3 class="text-xl font-bold mb-2">Música sin Límites</h3>
+                        <p class="text-gray-400 text-sm">Le instalamos Spotify para que puedas saltar todas las canciones que quieras. ¡La música no para!</p>
                     </div>
                 </div>
             </div>
         </section>
-    </main>
 
-    <!-- =========== Pie de Página del Carrito (Sticky) =========== -->
-    <footer class="bg-gray-900/90 backdrop-blur-sm sticky bottom-0 border-t border-gray-700 z-40">
+        <section class="py-16 md:py-24">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-center mb-12">Características Técnicas del Equipo</h2>
+                <div class="max-w-2xl mx-auto bg-gray-900 p-8 rounded-lg border border-gray-700">
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center border-b border-gray-700 pb-3">
+                            <span class="font-semibold text-gray-400">Modelo:</span>
+                            <span class="text-white">Onn. 4K Google TV Box (2da Gen)</span>
+                        </div>
+                        <div class="flex justify-between items-center border-b border-gray-700 pb-3">
+                            <span class="font-semibold text-gray-400">Resolución:</span>
+                            <span class="text-white">4K Ultra HD con HDR</span>
+                        </div>
+                        <div class="flex justify-between items-center border-b border-gray-700 pb-3">
+                            <span class="font-semibold text-gray-400">Sistema Operativo:</span>
+                            <span class="text-white">Google TV</span>
+                        </div>
+                        <div class="flex justify-between items-center border-b border-gray-700 pb-3">
+                            <span class="font-semibold text-gray-400">Conectividad:</span>
+                            <span class="text-white">Wi-Fi de doble banda y Bluetooth</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="font-semibold text-gray-400">Sonido:</span>
+                            <span class="text-white">Compatible con Dolby Audio</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    <div class="bg-gray-900/90 backdrop-blur-sm sticky bottom-0 border-t border-gray-700 z-40">
         <div class="container mx-auto px-6 py-3 flex justify-between items-center gap-4">
             <div class="flex items-center gap-3">
                 <button id="clear-cart-button" title="Vaciar Carrito" class="p-2 rounded-full text-gray-400 hover:text-white hover:bg-red-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed" disabled>
@@ -94,9 +160,8 @@
                 Completar Pedido
             </button>
         </div>
-    </footer>
+    </div>
 
-    <!-- =========== Pie de Página Original =========== -->
     <footer class="bg-gray-900">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 text-gray-400 text-sm">
             <div class="text-center">
@@ -113,24 +178,57 @@
             document.getElementById('mobile-menu').classList.toggle('hidden');
         });
 
-        // --- SCRIPT DEL CARRITO (VERSIÓN PARA PÁGINAS SIN PRODUCTOS) ---
+        // --- SCRIPT DEL CARRITO ---
         const totalPriceEl = document.getElementById('total-price');
         const buyButton = document.getElementById('buy-button');
         const clearCartButton = document.getElementById('clear-cart-button');
+        const addTvBoxButton = document.getElementById('add-tv-box-button'); // Botón específico del TV Box
         
-        const phoneNumber = '51943129913';
+        const phoneNumber = '51943129913'; // Tu número de WhatsApp
         const exchangeRate = 3.7;
-        const stockLimit = 50;
 
         const updateCartView = () => {
             const cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
-            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const total = cart.reduce((sum, item) => sum + (parseFloat(item.price) * item.quantity), 0);
             
             if (totalPriceEl) totalPriceEl.textContent = total.toFixed(2);
             if (buyButton) buyButton.disabled = total === 0;
             if (clearCartButton) clearCartButton.disabled = total === 0;
         };
+        
+        // Función para agregar un item al carrito
+        const addItemToCart = (item) => {
+            let cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
+            const existingItem = cart.find(cartItem => cartItem.id === item.id);
 
+            if (existingItem) {
+                // Si ya existe, puedes decidir si aumentar la cantidad o no. Por ahora, lo dejamos así.
+                alert('El TV Box ya está en tu carrito.');
+            } else {
+                cart.push({ ...item, quantity: 1 });
+            }
+            
+            localStorage.setItem('shoppingCart', JSON.stringify(cart));
+            updateCartView();
+            // Animación para indicar que se agregó
+            buyButton.classList.add('animate-pulse');
+            setTimeout(() => buyButton.classList.remove('animate-pulse'), 1500);
+        };
+
+        // Evento para el botón de compra del TV Box
+        if (addTvBoxButton) {
+            addTvBoxButton.addEventListener('click', () => {
+                const product = {
+                    id: addTvBoxButton.dataset.id,
+                    name: addTvBoxButton.dataset.name,
+                    price: addTvBoxButton.dataset.price,
+                    category: addTvBoxButton.dataset.category
+                };
+                addItemToCart(product);
+            });
+        }
+        
+        // Evento para el botón "Completar Pedido" del footer
         if (buyButton) {
             buyButton.addEventListener('click', () => {
                 const cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
@@ -149,7 +247,7 @@
 
                 let grandTotal = 0;
                 for (const category in grouped) {
-                    const categorySubtotal = grouped[category].reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                    const categorySubtotal = grouped[category].reduce((sum, item) => sum + (parseFloat(item.price) * item.quantity), 0);
                     grandTotal += categorySubtotal;
                     message += `*${category} (Subtotal: S/ ${categorySubtotal.toFixed(2)})*\n`;
                     grouped[category].forEach(item => {
@@ -169,16 +267,15 @@
             });
         }
 
+        // Evento para el botón de vaciar carrito
         if (clearCartButton) {
             clearCartButton.addEventListener('click', () => {
-                const cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
-                if (cart.length > 0) {
-                    localStorage.removeItem('shoppingCart');
-                    updateCartView();
-                }
+                localStorage.removeItem('shoppingCart');
+                updateCartView();
             });
         }
 
+        // Cargar vista inicial del carrito
         updateCartView();
     });
     </script>
