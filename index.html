@@ -24,6 +24,18 @@
         .fade-in-up {
             animation: fadeInUp 1s ease-out forwards;
         }
+        /* Animación de pulso para el texto de urgencia */
+        @keyframes pulse-urgent {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+        .animate-pulse-urgent {
+            animation: pulse-urgent 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
         .benefit-icon {
             filter: invert(75%) sepia(10%) saturate(200%) hue-rotate(180deg) brightness(100%) contrast(90%);
         }
@@ -74,6 +86,8 @@
                 </div>
 
                 <div class="mt-12 fade-in-up" style="animation-delay: 0.4s;">
+                    <p class="text-yellow-400 font-bold text-lg mb-4 animate-pulse-urgent">⚠️ ¡OFERTA EXCLUSIVA! UNIDADES LIMITADAS ⚠️</p>
+                    
                     <button id="add-tv-box-button"
                             data-id="onn-tv-box-01"
                             data-name="Onn. 4K TV Box (Edición Total)"
