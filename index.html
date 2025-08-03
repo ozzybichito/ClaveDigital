@@ -24,7 +24,6 @@
         .fade-in-up {
             animation: fadeInUp 1s ease-out forwards;
         }
-        /* Animación de pulso para el texto de urgencia */
         @keyframes pulse-urgent {
             0%, 100% {
                 transform: scale(1);
@@ -88,15 +87,21 @@
                 <div class="mt-12 fade-in-up" style="animation-delay: 0.4s;">
                     <p class="text-yellow-400 font-bold text-lg mb-4 animate-pulse-urgent">⚠️ ¡OFERTA EXCLUSIVA! UNIDADES LIMITADAS ⚠️</p>
                     
-                    <button id="add-tv-box-button"
-                            data-id="onn-tv-box-01"
-                            data-name="Onn. 4K TV Box (Edición Total)"
-                            data-price="180.00"
-                            data-category="Dispositivos Físicos"
-                            class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-4 px-10 rounded-lg text-xl transition-transform hover:scale-105 inline-block shadow-lg shadow-emerald-500/40">
-                        Añadir al Carrito - S/ 180.00
-                    </button>
-                    <p class="mt-4 text-sm text-gray-400">¡Envío rápido y seguro a todo el Perú! 📦</p>
+                    <div class="max-w-xs mx-auto">
+                        <div class="bg-gray-800 border border-gray-700 rounded-xl p-4">
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="text-xl font-bold text-white">Onn. 4K TV Box</span>
+                                <span class="text-2xl font-extrabold text-emerald-400">S/ 180.00</span>
+                            </div>
+                            <div class="flex items-center justify-center bg-gray-900 rounded-lg p-2">
+                                <button id="decrease-qty-btn" aria-label="Disminuir cantidad" class="px-5 py-2 text-3xl font-bold text-white rounded-lg hover:bg-gray-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">-</button>
+                                <span id="quantity-display" class="px-6 py-2 text-2xl font-bold text-white w-24 text-center">0</span>
+                                <button id="increase-qty-btn" aria-label="Aumentar cantidad" class="px-5 py-2 text-3xl font-bold text-white rounded-lg hover:bg-gray-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p class="mt-6 text-sm text-gray-400">¡Envío rápido y seguro a todo el Perú! 📦</p>
                 </div>
             </div>
         </section>
@@ -198,10 +203,23 @@
         const totalPriceEl = document.getElementById('total-price');
         const buyButton = document.getElementById('buy-button');
         const clearCartButton = document.getElementById('clear-cart-button');
-        const addTvBoxButton = document.getElementById('add-tv-box-button');
         
+        // Elementos del nuevo selector de cantidad
+        const decreaseQtyBtn = document.getElementById('decrease-qty-btn');
+        const increaseQtyBtn = document.getElementById('increase-qty-btn');
+        const quantityDisplay = document.getElementById('quantity-display');
+
         const phoneNumber = '51943129913';
         const exchangeRate = 3.7;
+        const tvBoxStockLimit = 5;
+
+        // Datos del producto TV Box
+        const tvBoxProduct = {
+            id: 'onn-tv-box-01',
+            name: 'Onn. 4K TV Box (Edición Total)',
+            price: 180.00,
+            category: 'Dispositivos Físicos'
+        };
 
         const updateCartView = () => {
             const cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
@@ -210,36 +228,65 @@
             if (totalPriceEl) totalPriceEl.textContent = total.toFixed(2);
             if (buyButton) buyButton.disabled = total === 0;
             if (clearCartButton) clearCartButton.disabled = total === 0;
+
+            // Actualizar el selector de cantidad del TV Box
+            updateQuantitySelector();
+        };
+
+        const updateQuantitySelector = () => {
+            const cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
+            const tvBoxItem = cart.find(item => item.id === tvBoxProduct.id);
+            const currentQty = tvBoxItem ? tvBoxItem.quantity : 0;
+
+            if (quantityDisplay) quantityDisplay.textContent = currentQty;
+            if (decreaseQtyBtn) decreaseQtyBtn.disabled = currentQty === 0;
+            if (increaseQtyBtn) increaseQtyBtn.disabled = currentQty >= tvBoxStockLimit;
         };
         
-        const addItemToCart = (item) => {
+        const addItemToCart = () => {
             let cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
-            const existingItem = cart.find(cartItem => cartItem.id === item.id);
+            let existingItem = cart.find(item => item.id === tvBoxProduct.id);
 
             if (existingItem) {
-                alert('El TV Box ya está en tu carrito.');
+                if (existingItem.quantity < tvBoxStockLimit) {
+                    existingItem.quantity++;
+                } else {
+                    alert(`Has alcanzado el límite de ${tvBoxStockLimit} unidades para este producto.`);
+                    return;
+                }
             } else {
-                cart.push({ ...item, quantity: 1 });
+                cart.push({ ...tvBoxProduct, quantity: 1 });
             }
             
             localStorage.setItem('shoppingCart', JSON.stringify(cart));
             updateCartView();
             buyButton.classList.add('animate-pulse');
-            setTimeout(() => buyButton.classList.remove('animate-pulse'), 1500);
+            setTimeout(() => buyButton.classList.remove('animate-pulse'), 1000);
         };
 
-        if (addTvBoxButton) {
-            addTvBoxButton.addEventListener('click', () => {
-                const product = {
-                    id: addTvBoxButton.dataset.id,
-                    name: addTvBoxButton.dataset.name,
-                    price: addTvBoxButton.dataset.price,
-                    category: addTvBoxButton.dataset.category
-                };
-                addItemToCart(product);
-            });
+        const decreaseItemQuantity = () => {
+            let cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
+            let existingItem = cart.find(item => item.id === tvBoxProduct.id);
+
+            if (existingItem) {
+                existingItem.quantity--;
+                if (existingItem.quantity === 0) {
+                    cart = cart.filter(item => item.id !== tvBoxProduct.id);
+                }
+                localStorage.setItem('shoppingCart', JSON.stringify(cart));
+                updateCartView();
+            }
+        };
+
+        // Asignar eventos a los botones del selector
+        if (increaseQtyBtn) {
+            increaseQtyBtn.addEventListener('click', addItemToCart);
+        }
+        if (decreaseQtyBtn) {
+            decreaseQtyBtn.addEventListener('click', decreaseItemQuantity);
         }
         
+        // Lógica del botón de completar pedido (sin cambios)
         if (buyButton) {
             buyButton.addEventListener('click', () => {
                 const cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
@@ -278,6 +325,7 @@
             });
         }
 
+        // Lógica del botón de vaciar carrito (sin cambios)
         if (clearCartButton) {
             clearCartButton.addEventListener('click', () => {
                 localStorage.removeItem('shoppingCart');
@@ -285,6 +333,7 @@
             });
         }
 
+        // Cargar vista inicial del carrito y del selector
         updateCartView();
     });
     </script>
